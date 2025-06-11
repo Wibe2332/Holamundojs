@@ -1,0 +1,15 @@
+name: Notificar push a ntfy.sh
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notificar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enviar notificación a ntfy.sh
+        run: |
+          curl -d "🟢 ${GITHUB_ACTOR} subió cambios al repositorio.
+          🔗 Commit: https://github.com/${{ github.repository }}/commit/${{ github.sha }}" https://ntfy.sh/devops-itla
